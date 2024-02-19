@@ -59,7 +59,7 @@ java Test counting merge
 |------|------|---------|---------|---------|
 | -o   | array ordering | reverse, sorted, random | reverse | java ArrayMaker -o random |
 | -p   | percent randomized | 1-100 | 100 | java ArrayMaker -o random -p 50 |
-| -f   | filename for saving array (data/ added to the front) | <file>.txt | data.txt | java ArrayMaker -f datafile.txt |
+| -f   | filename for saving array (data/ added to the front) | \<file\>.txt | data.txt | java ArrayMaker -f datafile.txt |
 | -s   | size of array | integer | 100000 | java ArrayMaker -s 1000 |
 
 Options can appear in any order: `java ArrayMaker -f data.txt -p 50 -o random`
@@ -75,8 +75,8 @@ The `Experiment` class allows you to record count and timing information for an 
 | flag | desc | options | default |
 |------|------|---------|---------|
 | -o   | sorting order | alpha, number | number |
-| -d   | datafile to sort | <file> - relative path | none | 
-| -f   | filename for saving data (appends to file) | <file>.csv | data.csv | 
+| -d   | datafile to sort | \<file\>.txt (relative path) | none | 
+| -f   | filename for saving data (appends to file) | \<file\>.csv | data.csv | 
 | -s   | maximum size array | any value up to number of elements in datafile | number of elements in the datafile |
 
 Here are several examples of how to run an experiment:
