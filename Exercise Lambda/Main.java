@@ -25,29 +25,41 @@ public class Main {
     
     	// Define each of these functions to extract either the alpha component or the numeric component. Your choice for Object.
 
-        Function<AlphaNumeric,String> fnS;
-        Function<AlphaNumeric,Integer> fnI;
-        Function<AlphaNumeric,Object> fnO;
+        Function<AlphaNumeric,String> fnS = (alphaNumeric) -> alphaNumeric.alpha();
+        Function<AlphaNumeric,Integer> fnI = (alphaNumeric) -> alphaNumeric.number();
+        Function<AlphaNumeric,Object> fnO = (alphaNumeric) -> alphaNumeric.alpha();
         
         // Pass your functions to these tests to see if they are working.
-        //testAlpha(...);
-        //testNumer(...);
-        //testObject(...);
+        testAlpha(fnS);
+        testNumber(fnI);
+        testObject(fnO);
     }
 
     public static void testAlpha(Function<AlphaNumeric,String> fn) {
         // Print the results of applying the function to each element in array.
         System.out.println("\n-- Function testAlpha");
+        for ( AlphaNumeric a : array){
+            System.out.print(fn.apply(a) + " ");
+        }
+        System.out.println();
     }
 
     public static void testNumber(Function<AlphaNumeric,Integer> fn) {
         // Print the results of applying the function to each element in array.
         System.out.println("\n-- Function testNumber");
+        for ( AlphaNumeric a : array){
+            System.out.print(fn.apply(a) + " ");
+        }
+        System.out.println();
     }
     
     public static void testObject(Function<AlphaNumeric,Object> fn) {
         // Print the results of applying the function to each element in array.
         System.out.println("\n-- Function testObject");
+        for ( AlphaNumeric a : array){
+            System.out.print(fn.apply(a) + " ");
+        }
+        System.out.println();
     }
 
     //______________________________________________________________________
@@ -55,12 +67,17 @@ public class Main {
     public static void queryWithFunctions() {
 
         // Create a Function that returns a Boolean for matching the letter x
+        Function<AlphaNumeric,Boolean> fnB = (alphaNumeric) -> alphaNumeric.alpha().equals("x");
         
         // query the List items to find all "x" AlphaNumerics, save to ArrayList
+        ArrayList<AlphaNumeric> items = List.query(fnB);
         
         // print found elements
         System.out.println("\n-- Results of query for x");  
-
+        for ( AlphaNumeric a :items) {
+            System.out.print(a + " ");
+        }
+        System.out.println();
         
         // Create a Function that returns a Boolean for matching all numbers>=2
         
