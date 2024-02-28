@@ -82,9 +82,9 @@ The `Experiment` class allows you to record count and timing information for an 
 Here are several examples of how to run an experiment:
 
 ```
-java insert -o alpha -d data/random_rand100_v0.txt -f results.csv -s 1000
-java merge -o numeric -d data/sorted.txt -f results.csv
-java counting -d data/reversed.txt -f results.csv -s 10000000
+java Experiment insert -o alpha -d data/random_rand100_v0.txt -f results.csv -s 1000
+java Experiment merge -o numeric -d data/sorted.txt -f results.csv
+java Experiment counting -d data/reversed.txt -f results.csv -s 10000000
 ```
 
 
