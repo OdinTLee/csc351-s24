@@ -38,7 +38,7 @@ public class Counting<T> implements Sorter<T> {
         * @param array Array to be sorted.
         */
         @Override
-        public void sort(T[] array) {
+        public void sort(T[] B) {
 
             /*
             Counting sort is not an in-place sorting algorithm.
@@ -48,19 +48,58 @@ public class Counting<T> implements Sorter<T> {
             copy them from the unsorted "A" array into "array".
             */
             @SuppressWarnings("unchecked")
-            T[] unsorted = (T[]) new Object[array.length];
-            for (int i=0; i<array.length; i++) {
-                unsorted[i] = array[i];
+            T[] A = (T[]) new Object[B.length];
+            for (int i=0; i<B.length; i++) {
+                A[i] = B[i];
             }
 
-            // TODO ... COMPLETE THE COUNTING SORT ALGORITHM.
+            int k = keyGetter.apply(A[0]);
+            for(int i = 0; i < A.length; i++){
+                if(keyGetter.apply(A[i]) >= k) {
+                    k = keyGetter.apply(A[i]);
+                }
+                count++;
+            }
 
+            // k needs to be the index thus C array of size 11
+            int[] C = new int[k + 1];
+
+            // Filling array with 0s
+            for(int i = 0; i < C.length; i++){
+                C[i] = 0;
+                count++;
+            }
+
+            // Creating histogram
+            for(int j = 0; j < A.length; j++){
+                C[keyGetter.apply(A[j])] = C[keyGetter.apply(A[j])] + 1;
+                count++;
+            }
+
+            // C[i] has # of elements less than or equal to i
+            for(int i = 1; i < C.length; i++){
+                C[i] = C[i] + C[i - 1];
+                count++;
+            }
+
+            // Fill sorted array B from counts in C.
+            for(int j = A.length - 1; j >=0; j--) {
+                B[C[keyGetter.apply(A[j])] -1] = A[j];
+                C[keyGetter.apply(A[j])] = C[keyGetter.apply(A[j])] - 1;
+                count++;
+            }
+
+            // Copy sorted elements back into array A
+            for(int i = 0; i < A.length; i++) {
+                A[i] = B[i];
+                count++;
+            }
         } // end sort(T[])
 
 
-        private Integer findMax(T[] array) {
-            Integer max = keyGetter.apply(array[0]);
-            for (T element : array) {
+        private Integer findMax(T[] B) {
+            Integer max = keyGetter.apply(B[0]);
+            for (T element : B) {
                 Integer valueOf = keyGetter.apply(element);
                 if (valueOf > max) {
                     max = valueOf;
@@ -82,4 +121,4 @@ public class Counting<T> implements Sorter<T> {
         public void setComparator(Comparator<T> c) {
             // not relevant for counting sort
         }
-    } // end class Countin
+    } // end class Counting

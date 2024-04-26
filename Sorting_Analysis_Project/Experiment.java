@@ -85,6 +85,10 @@ public class Experiment {
 				algorithmString = "merge";
 				algo = new Merge<AlphaNumeric>(orderBy);
 				break;
+			case "tim":
+				algorithmString = "tim";
+				algo = new Tim<AlphaNumeric>(orderBy);
+			break;
 			case "radix":
 				algorithmString = "radix";
 				algo = new Radix<AlphaNumeric>(AlphaNumeric.numberGetter);
@@ -150,6 +154,9 @@ public class Experiment {
 		for (int i=0; i<datapoints; i++) {
 			// Create a new array of appropriate size
 			subarray = new AlphaNumeric[(i+1)*increment];
+			for (int j=0; j<((i+1)*increment); j++) {
+				subarray[j] = array[j];
+			}
 			algo.sort(subarray);
 			counts[i] = algo.getCount();
 		}

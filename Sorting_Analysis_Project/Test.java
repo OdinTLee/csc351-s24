@@ -55,6 +55,10 @@ public class Test {
     				title = "TESTING MERGE";
     				algo = new Merge<AlphaNumeric>(orderBy);
     				break;
+				case "tim":
+    				title = "TESTING TIM";
+    				algo = new Tim<AlphaNumeric>(orderBy);
+    			break;
     			case "radix":
     				title = "TESTING RADIX";
     				algo = new Radix<AlphaNumeric>(AlphaNumeric.numberGetter);
