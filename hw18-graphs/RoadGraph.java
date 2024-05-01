@@ -33,6 +33,13 @@ public class RoadGraph {
 		this.edges = edges;
 		this.vertices = vertices;
 	}
+
+	public ArrayList<Vertex> vertices() {
+		return vertices;
+	}
+	public void distance(ArrayList<Vertex> v) {
+		vertices = v;
+	}
 	
 	/** Nice display of all waypoints and edges. */
 	public void display() {

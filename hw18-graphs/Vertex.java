@@ -29,7 +29,7 @@ public class Vertex {
 	* @param point Waypoint designating a road intersection
 	*/
 	public Vertex(Waypoint point) {
-	
+
 		this.point = point;
 	}
 	
@@ -58,7 +58,7 @@ public class Vertex {
 	
 	// getter only - do not want user to modify waypoing
 	public Waypoint point() {
-		return point();
+		return point;
 	}
 
 	public Vertex parent() {
@@ -67,7 +67,14 @@ public class Vertex {
 	public void parent(Vertex p) {
 		parent = p;
 	}
-	
+
+	public Double distance() {
+		return distance;
+	}
+	public void distance(Double d) {
+		distance = d;
+	}
+
 	public Boolean visited() {
 		return visited;
 	}
